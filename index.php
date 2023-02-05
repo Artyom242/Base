@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +11,7 @@
 
 <body>
     <?php
-    $host = 'localhost'; // имя хоста
-    $user = 'root';      // имя пользователя
-    $pass = '';          // пароль
-    $name = 'Users';      // имя базы данных
 
-
-    $db = new PDO('mysql:host=localhost;dbname=Users', 'root', '');
     $sql = "insert into Users('Name','Age',Salary) values (name,age,salary)";
     $print= $db->query("select * from Users");
     $arr = $print->fetchAll(PDO::FETCH_ASSOC);

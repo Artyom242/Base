@@ -5,4 +5,4 @@ $pass = '';          // пароль
 $name = 'Users';      // имя базы данных
 
 
-$db = new PDO('mysql:host=localhost;dbname=Users', 'root', '');
+$db = new pdo('mysql:host=localhost;dbname=Users', 'root', '');
