@@ -1,9 +1,15 @@
 <?php
-require_once ('configDB.php');
+require_once ('base.php');
+$db = new PDO('mysql:host=localhost;dbname=Users', 'root', '');
+$name = $_POST['Name'];
+$age = $_POST['Age'];
+$salary = $_POST['Salary'];
+if(!empty($name)&& !empty($age)&& !empty($salary) ){
 
-$Name = $_POST['Name'];
-$Age = $_POST['Age'];
-$Salary = $_POST['Salary'];
+    $params = ['name'=>$name,'age'=>$age,'salary'=>$salary];
+    $sqlAdd= ('insert into Users (Name,Age,Salary) values (:name,:age,:salary)');
+    $stmt = $db ->prepare($sqlAdd);
+    $stmt->execute($params);
 
-$add = $db->exec('insert into users ( "Name","Age","Salary") values (null,"$Name","$Age","$Salary")');
-header('Location: /');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
+}
